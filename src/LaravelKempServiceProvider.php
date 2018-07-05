@@ -35,7 +35,7 @@ class LaravelKempServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->app->singleton(
             KempClient::class, function ($app) {
-            return new KempClient(config('kemp.ipAddress'), config('kemp.username'), config('kemp.password'), config('kemp.certificate'));
+            return new KempClient(config('kemp.ipAddress'), config('kemp.username'), config('kemp.password'), config('kemp.certificate'), config('kemp.verifyCertificate'));
         }
         );
     }

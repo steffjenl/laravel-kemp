@@ -24,14 +24,15 @@ class KempClient
     /**
      * KempClient constructor.
      *
-     * @param $ipAddress
-     * @param $username
-     * @param $password
-     * @param $certificate
+     * @param string $ipAddress
+     * @param string $username
+     * @param string $password
+     * @param string $certificate
+     * @param bool $verifyCertificate
      */
-    public function __construct($ipAddress, $username, $password, $certificate)
+    public function __construct($ipAddress, $username, $password, $certificate, $verifyCertificate = true)
     {
-        $this->client = new Client($ipAddress, $username, $password, $certificate);
+        $this->client = new Client($ipAddress, $username, $password, $certificate, $verifyCertificate);
     }
 
     /**

@@ -39,6 +39,11 @@ class Client
      * @var string $certificate
      */
     private $certificate;
+    /**
+     * @var string $certificate
+     */
+    private $verifyCertificate;
+
 
     /**
      * Client constructor.
@@ -47,13 +52,15 @@ class Client
      * @param string $username
      * @param string $password
      * @param string $certificate
+     * @param bool   $verifyCertificate
      */
-    public function __construct($ipAddress, $username, $password, $certificate = null)
+    public function __construct($ipAddress, $username, $password, $certificate = null, $verifyCertificate = true)
     {
         $this->ipAddress = $ipAddress;
         $this->username = $username;
         $this->password = $password;
         $this->certificate = $certificate;
+        $this->verifyCertificate = $verifyCertificate;
     }
 
     /**
@@ -68,14 +75,13 @@ class Client
     {
         $curl = curl_init();
         curl_setopt_array($curl, [
+            CURLOPT_FRESH_CONNECT  => 1,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL            => sprintf('https://%s/%s', $this->ipAddress, $endpoint),
             CURLOPT_HEADER         => 0,
             CURLOPT_USERPWD        => sprintf('%s:%s', $this->username, $this->password),
-            CURLOPT_SSL_VERIFYHOST => 0,
-            CURLOPT_SSL_VERIFYPEER => 0,
-
         ]);
+        $curl = $this->setVerifyHostCertificate($curl);
         $response = curl_exec($curl);
 
         if (!$response) {
@@ -85,6 +91,32 @@ class Client
         curl_close($curl);
 
         return $this->parseResponse($response);
+    }
+
+    /**
+     * setVerifyHostCertificate
+     *
+     * @param resource $curl
+     *
+     * @return mixed
+     * @throws \ParagonIE\Certainty\Exception\BundleException
+     * @throws \ParagonIE\Certainty\Exception\EncodingException
+     * @throws \ParagonIE\Certainty\Exception\FilesystemException
+     * @throws \ParagonIE\Certainty\Exception\RemoteException
+     * @throws \SodiumException
+     */
+    private function setVerifyHostCertificate($curl)
+    {
+        if ($this->verifyCertificate) {
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+
+            return $curl;
+        }
+
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        return $curl;
     }
 
     /**

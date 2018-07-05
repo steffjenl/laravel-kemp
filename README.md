@@ -21,10 +21,11 @@ Then add this in `config/services.php`:
 
 ```php
         'kemp' => [
-            'ipAddress'      => env('KEMP_IPADDRESS'),
-            'username'       => env('KEMP_USERNAME'),
-            'password'       => env('KEMP_PASSWORD'),
-            'certificate'    => env('KEMP_CERTIFICATE', null),
+            'ipAddress'         => env('KEMP_IPADDRESS'),
+            'username'          => env('KEMP_USERNAME'),
+            'password'          => env('KEMP_PASSWORD'),
+            'certificate'       => env('KEMP_CERTIFICATE', null),
+            'verifyCertificate' => env('KEMP_VERIFYSSL', true),
         ],
 ```
 
