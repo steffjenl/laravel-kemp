@@ -28,6 +28,8 @@ Then add this in `config/services.php`:
         ],
 ```
 
-Finally, add the fields `AZURE_STORAGE_NAME`, `AZURE_STORAGE_KEY` and `AZURE_STORAGE_CONTAINER` to your `.env` file with the appropriate credentials. Then you can set the `azure` driver as either your default or cloud driver and use it to fetch and retrieve files as usual.
+Finally, add the fields `KEMP_IPADDRESS`, `KEMP_USERNAME` and `KEMP_PASSWORD` to your `.env` file with the appropriate credentials.
+
+Note: Certificate is not used yet!
 
 # Configuration
