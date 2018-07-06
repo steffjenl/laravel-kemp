@@ -35,6 +35,6 @@ class ServiceProviderTest extends TestCase
     public function can_connect_to_kemp_loadmaster()
     {
         $config = $this->app['config'];
-        $client = KempClient::addVirtualService($config->get('services.kemp.ipAddress'), $config->get('services.kemp.username'), $config->get('services.kemp.password'), $config->get('services.kemp.certificate'));
+        $client = new KempClient($config->get('services.kemp.ipAddress'), $config->get('services.kemp.username'), $config->get('services.kemp.password'), $config->get('services.kemp.certificate'));
     }
 }
