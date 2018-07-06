@@ -21,5 +21,5 @@ Homestead.json
 
 # phpStorm
 .idea/
-
+composer.lock
 test.php

@@ -13,7 +13,7 @@ use Kemp\Exceptions\KempException;
  * @copyright 2018 Stephan Eizinga
  * @link      https://github.com/steffjenl/laravel-kemp
  */
-class Kemp
+class KempClient
 {
     /**
      * @var Client $client

@@ -8,7 +8,7 @@ class TestCase extends BaseTestCase
 {
     protected function getPackageProviders($app)
     {
-        return ['SteffjeNL\LaravelKemp\LaravelKempServiceProvider'];
+        return ['Kemp\KempServiceProvider'];
     }
 
     /**

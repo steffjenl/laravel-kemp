@@ -33,8 +33,8 @@ class KempServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         $this->app->singleton(
-            Kemp::class, function ($app) {
-            return new Kemp(config('kemp.ipAddress'), config('kemp.username'), config('kemp.password'), config('kemp.certificate'), config('kemp.verifyCertificate'));
+            KempClient::class, function ($app) {
+            return new KempClient(config('kemp.ipAddress'), config('kemp.username'), config('kemp.password'), config('kemp.certificate'), config('kemp.verifyCertificate'));
         }
         );
     }
@@ -47,7 +47,7 @@ class KempServiceProvider extends \Illuminate\Support\ServiceProvider
     public function provides()
     {
         return [
-            Kemp::class,
+            KempClient::class,
         ];
     }
 }
