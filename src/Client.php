@@ -1,8 +1,8 @@
 <?php
 
-namespace SteffjeNL\LaravelKemp;
+namespace Kemp;
 
-use SteffjeNL\LaravelKemp\Exceptions\KempException;
+use Kemp\Exceptions\KempException;
 use function curl_init;
 use function curl_setopt_array;
 use function curl_exec;
@@ -15,8 +15,7 @@ use function is_object;
 /**
  * Class Client
  *
- * @category  DevOps
- * @package   SteffjeNL\LaravelKemp
+ * @package   laravel-kemp
  * @author    Stephan Eizinga <stephan@monkeysoft.nl>
  * @copyright 2018 Stephan Eizinga
  * @link      https://github.com/steffjenl/laravel-kemp

@@ -1,11 +1,10 @@
 <?php
-namespace SteffjeNL\LaravelKemp\Exceptions;
+namespace Kemp\Exceptions;
 
 /**
  * Class KempException
  *
- * @category  DevOps
- * @package   SteffjeNL\LaravelKemp
+ * @package   laravel-kemp
  * @author    Stephan Eizinga <stephan@monkeysoft.nl>
  * @copyright 2018 Stephan Eizinga
  * @link      https://github.com/steffjenl/laravel-kemp

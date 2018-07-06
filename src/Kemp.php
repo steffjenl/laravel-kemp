@@ -1,20 +1,19 @@
 <?php
 
-namespace SteffjeNL\LaravelKemp;
+namespace Kemp;
 
 use function sprintf;
-use SteffjeNL\LaravelKemp\Exceptions\KempException;
+use Kemp\Exceptions\KempException;
 
 /**
- * Class KempClient
+ * Class Kemp
  *
- * @category  DevOps
- * @package   SteffjeNL\LaravelKemp
+ * @package   laravel-kemp
  * @author    Stephan Eizinga <stephan@monkeysoft.nl>
  * @copyright 2018 Stephan Eizinga
  * @link      https://github.com/steffjenl/laravel-kemp
  */
-class KempClient
+class Kemp
 {
     /**
      * @var Client $client

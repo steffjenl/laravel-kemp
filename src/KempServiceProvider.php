@@ -1,17 +1,16 @@
 <?php
 
-namespace SteffjeNL\LaravelKemp;
+namespace Kemp;
 
 /**
- * Class LaravelKempServiceProvider
+ * Class KempServiceProvider
  *
- * @category  DevOps
- * @package   SteffjeNL\LaravelKemp
+ * @package   laravel-kemp
  * @author    Stephan Eizinga <stephan@monkeysoft.nl>
  * @copyright 2018 Stephan Eizinga
  * @link      https://github.com/steffjenl/laravel-kemp
  */
-class LaravelKempServiceProvider extends \Illuminate\Support\ServiceProvider
+class KempServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
@@ -34,8 +33,8 @@ class LaravelKempServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         $this->app->singleton(
-            KempClient::class, function ($app) {
-            return new KempClient(config('kemp.ipAddress'), config('kemp.username'), config('kemp.password'), config('kemp.certificate'), config('kemp.verifyCertificate'));
+            Kemp::class, function ($app) {
+            return new Kemp(config('kemp.ipAddress'), config('kemp.username'), config('kemp.password'), config('kemp.certificate'), config('kemp.verifyCertificate'));
         }
         );
     }
@@ -48,7 +47,7 @@ class LaravelKempServiceProvider extends \Illuminate\Support\ServiceProvider
     public function provides()
     {
         return [
-            KempClient::class,
+            Kemp::class,
         ];
     }
 }
